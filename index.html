@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDTIMES GD-208 - Sistema Solar con Música</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --color-principal: #228B22; /* Verde solar */
+            --color-secundario: #000000; /* Negro profesional */
+            --color-claro: #F9F9F9;
+            --color-destacado: #FFD700; /* Amarillo para resaltar */
+        }
+
+        header {
+            background-color: var(--color-principal);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-destacado);
+        }
+
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1551244072-5d12893278ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-destacado);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--color-destacado);
+            color: var(--color-secundario);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e6c800;
+        }
+
+        .seccion {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .seccion h2 {
+            color: var(--color-principal);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .producto-contenido {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .producto-contenido {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        .producto-contenido img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .caracteristica-card {
+            background-color: var(--color-claro);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .caracteristica-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .caracteristica-card h3 {
+            color: var(--color-principal);
+            margin-bottom: 1rem;
+        }
+
+        .precio-seccion {
+            background-color: var(--color-principal);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .precio-seccion h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .precio {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--color-destacado);
+            margin-bottom: 2rem;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--color-claro);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        form button {
+            width: 100%;
+            background-color: var(--color-principal);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #1a701a;
+        }
+
+        footer {
+            background-color: var(--color-secundario);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GDTIMES - CREATE GREEN LIFE</h1>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#producto">Producto</a>
+            <a href="#caracteristicas">Características</a>
+            <a href="#precio">Precio</a>
+            <a href="#pedido">Pedido</a>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Sistema Solar GD-208</h1>
+        <p>Iluminación, Música y Energía Sostenible en un solo producto</p>
+        <a href="#pedido" class="btn">Hacer Pedido Ahora</a>
+    </section>
+
+    <section id="producto" class="seccion">
+        <h2>Nuestro Producto</h2>
+        <div class="producto-contenido">
+            <img src="https://images.unsplash.com/photo-1628746404106-4d3843b231b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Sistema Solar GDTIMES GD-208">
+            <div>
+                <p>El Sistema de Iluminación Solar GD-208 de GDTIMES es la solución perfecta para quienes buscan energía limpia y multifuncionalidad. Diseñado para uso doméstico o en espacios sin conexión eléctrica, combina tecnología moderna con sostenibilidad.</p>
+                <br>
+                <p>Incluye panel solar, linterna potente, reproducción de música, radio AM/FM, lectura de tarjetas TF, conexión USB y función de banco de energía portátil de 6000mAh con carga rápida. Ideal para hogares, camping o emergencias.</p>
+                <br>
+                <p>Cuenta con 4 bombillas LED de alto rendimiento que proporcionan luz clara y eficiente, sin generar costos de electricidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="caracteristicas" class="seccion">
+        <h2>Características Principales</h2>
+        <div class="caracteristicas-grid">
+            <div class="caracteristica-card">
+                <h3>Energía Solar</h3>
+                <p>Carga completamente con luz solar o vía USB, reduciendo costos y cuidando el medio ambiente.</p>
+            </div>
+            <div class="caracteristica-card">
+                <h3>4 Bombillas LED</h3>
+                <p>Iluminación eficiente para múltiples espacios, con bajo consumo de energía.</p>
+            </div>
+            <div class="caracteristica-card">
+                <h3>Reproducción de Música</h3>
+                <p>Conecta tu dispositivo o usa tarjetas TF para escuchar tus canciones favoritas.</p>
+            </div>
+            <div class="caracteristica-card">
+                <h3>Banco de Energía</h3>
+                <p>6000mAh para cargar celulares y otros dispositivos en cualquier lugar.</p>
+            </div>
+            <div class="caracteristica-card">
+                <h3>Linterna Potente</h3>
+                <p>Ideal para emergencias o actividades al aire libre.</p>
+            </div>
+            <div class="caracteristica-card">
+                <h3>Radio AM/FM</h3>
+                <p>Mantente informado y entretenido en cualquier momento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="precio" class="precio-seccion">
+        <h2>Precio Especial</h2>
+        <p>Oferta limitada para clientes de Colombia</p>
+        <div class="precio">$299.000 COP</div>
+        <a href="#pedido" class="btn">Reservar Mi Producto</a>
+    </section>
+
+    <section id="pedido" class="seccion">
+        <h2>Hacer Pedido</h2>
+        <form>
+            <input type="text" placeholder="Tu Nombre Completo" required>
+            <input type="tel" placeholder="Tu Número de Celular" required>
+            <input type="email" placeholder="Tu Correo Electrónico (Opcional)">
+            <textarea rows="3" placeholder="Dirección de Entrega o Observaciones" required></textarea>
+            <button type="submit">Enviar Pedido</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - GDTIMES Colombia | Sistema Solar GD-208</p>
+        <p>Desarrollado con tecnología de ventas por Dola</p>
+    </footer>
+</body>
+  </html>
+  
